@@ -16,7 +16,9 @@ a {
 }
 
 body {
-  background-color: rgb(39, 39, 39);
+  background-image: url("./img/background.png");
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 nav {
