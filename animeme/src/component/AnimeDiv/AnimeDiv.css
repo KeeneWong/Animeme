@@ -1,0 +1,14 @@
+.animediv {
+  /* width: 250px; */
+  height: 335px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 7px;
+}
+
+.animediv p {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.548);
+  margin: 0px;
+}

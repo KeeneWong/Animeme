@@ -2,9 +2,17 @@
   text-align: center;
 }
 
+.test {
+  border: 4px solid rgba(255, 255, 0, 0.507);
+}
+
 * {
   color: aliceblue;
   font-family: "Fredoka One", cursive;
+}
+
+a {
+  text-decoration: none;
 }
 
 body {
@@ -18,6 +26,21 @@ nav {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   justify-content: center;
   align-items: center;
+}
+
+.navitem4 {
+  grid-column: 4;
+}
+.navitem5 {
+  grid-column: 5;
+}
+.navitem6 {
+  grid-column: 6;
+}
+
+.navitem1 {
+  grid-column: 1;
+  margin-left: 20px;
 }
 
 nav h2 {
