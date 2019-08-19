@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 import "./App.css";
 import Home from "./component/Home/Home";
+import AnimeDetail from "./component/AnimeDetail/AnimeDetail";
 
 const data = require("./animeData.json");
 
@@ -39,10 +40,10 @@ class App extends Component {
             )}
           />
           <Route
-            path="/"
+            path="/animes/:animeName"
             exact
             render={routeProps => (
-              <Home animes={this.state.animes} {...routeProps} />
+              <AnimeDetail animes={this.state.animes} {...routeProps} />
             )}
           />
         </main>

@@ -1,0 +1,27 @@
+.animeDetail {
+  background: blue;
+  height: 92vh;
+  background-size: cover;
+}
+
+.darken-pseudo {
+  position: relative;
+}
+
+.darken-pseudo:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.darken-with-text h1 {
+  z-index: 1;
+  position: relative;
+}
+.animeDetail h1 {
+  margin: 0px;
+}
