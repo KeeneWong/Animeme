@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: flex-end;
   border-radius: 7px;
+  background-position: center;
 }
 
 .animediv p {

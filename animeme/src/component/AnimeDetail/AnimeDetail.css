@@ -2,6 +2,10 @@
   background: blue;
   height: 92vh;
   background-size: cover;
+  background-position: center;
+  /* padding: 40px; */
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
 }
 
 .darken-pseudo {
@@ -22,6 +26,52 @@
   z-index: 1;
   position: relative;
 }
+
+.darken-with-text h3 {
+  z-index: 1;
+  position: relative;
+}
 .animeDetail h1 {
   margin: 0px;
+}
+
+.detailimg {
+  height: 400px;
+  width: 275px;
+  z-index: 1;
+  position: relative;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.leftDetail {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.rightDetail {
+  padding: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rightDetail h1 {
+  margin-top: 60px;
+}
+
+.rightDetail h3 {
+  /* width:  */
+  text-align: left;
+}
+
+.backbutton {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.288);
+  border-radius: 5px;
+  padding: 5px;
+  border: 4px solid rgba(255, 255, 255, 0.479);
+  margin: 10px;
 }
