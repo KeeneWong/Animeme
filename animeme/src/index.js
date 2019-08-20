@@ -5,10 +5,19 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
 
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import store from "./store";
+
+store.subscribe(() => console.log(store.getState()));
+console.log(getState());
+
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
   document.getElementById("root")
 );
 serviceWorker.unregister();
