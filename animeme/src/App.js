@@ -56,7 +56,10 @@ class App extends Component {
         alert(`a user has been signup`);
         // this.history.push("/");
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        alert(`Invaild information`);
+        console.log(err);
+      });
   };
 
   handleLogOut = () => {
@@ -79,7 +82,10 @@ class App extends Component {
         localStorage.token = response.data.token;
         this.setState({ isLoggedIn: true });
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        alert(`wrong email or password`);
+        console.log(err);
+      });
   };
 
   render() {

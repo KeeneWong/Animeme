@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 class Navbar extends Component {
   render() {
@@ -10,7 +11,9 @@ class Navbar extends Component {
       navrender = [
         <nav>
           <Link to="/" className="navitem navitem1">
-            <h2>Animeme</h2>
+            <h2>
+              <span class="red">A</span>nimeme
+            </h2>
           </Link>
           {/* <h3>{checkstatus}</h3> */}
           <Link to="/favourite" className="navitem navitem3">
@@ -33,7 +36,9 @@ class Navbar extends Component {
       navrender = [
         <nav>
           <Link to="/" className="navitem navitem1">
-            <h2>Animeme</h2>
+            <h2>
+              <span class="red">A</span>nimeme
+            </h2>
           </Link>
           {/* <h3>{checkstatus}</h3> */}
           {/* <h3>{this.props.state.email}</h3> */}
