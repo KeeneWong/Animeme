@@ -30,6 +30,10 @@ nav {
   align-items: center;
 }
 
+.navitem h3:hover {
+  box-shadow: 0px 0px 10px 2px rgba(150, 177, 218, 0.993);
+}
+
 .navitem4 {
   grid-column: 4;
 }
@@ -38,6 +42,12 @@ nav {
 }
 .navitem6 {
   grid-column: 6;
+}
+.navitem h3 {
+  background-color: rgba(138, 138, 138, 0.199);
+  display: inline-block;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .navitem1 {
