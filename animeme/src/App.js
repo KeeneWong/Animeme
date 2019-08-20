@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Link } from "react-router-dom";
+import { Route, Link, Redirect } from "react-router-dom";
 import "./App.css";
 import Home from "./component/Home/Home";
 import AnimeDetail from "./component/AnimeDetail/AnimeDetail";
@@ -52,8 +52,8 @@ class App extends Component {
       })
       .then(response => {
         this.setState({ isLoggedIn: true });
-        window.location.href = "http://localhost:3000/";
         alert(`a user has been signup`);
+        // this.history.push("/");
       })
       .catch(err => console.log(err));
   };
@@ -84,7 +84,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar state={this.state} />
+        <Navbar state={this.state} handleLogOut={this.handleLogOut} />
         <main>
           <Route
             path="/"
