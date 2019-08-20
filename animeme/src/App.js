@@ -9,6 +9,7 @@ import axios from "axios";
 import Signup from "./component/SignUp/Signup";
 import Navbar from "./component/Navbar/Navbar";
 import UserFavourite from "./component/UserFavourite/UserFavourite";
+import { withRouter } from "react-router-dom";
 
 // const data = require("./animeData.json");
 
@@ -54,7 +55,7 @@ class App extends Component {
       .then(response => {
         this.setState({ isLoggedIn: true });
         alert(`a user has been signup`);
-        // this.history.push("/");
+        this.props.history.push("/");
       })
       .catch(err => {
         alert(`Invaild information`);
@@ -81,6 +82,7 @@ class App extends Component {
       .then(response => {
         localStorage.token = response.data.token;
         this.setState({ isLoggedIn: true });
+        this.props.history.push("/");
       })
       .catch(err => {
         alert(`wrong email or password`);
@@ -150,4 +152,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
