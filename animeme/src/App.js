@@ -6,6 +6,8 @@ import AnimeDetail from "./component/AnimeDetail/AnimeDetail";
 import Search from "./component/Search/Search";
 import Login from "./component/Login/Login";
 import axios from "axios";
+import Signup from "./component/SignUp/Signup";
+import Navbar from "./component/Navbar/Navbar";
 
 // const data = require("./animeData.json");
 
@@ -13,7 +15,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      animes: []
+      animes: [],
+      userName: "",
+      email: "",
+      password: "",
+      isLoggedIn: false
     };
   }
 
@@ -29,25 +35,56 @@ class App extends Component {
         console.error(err);
       });
   }
+  handleInput = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+    console.log(this);
+  };
+
+  handleSignUp = e => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:3001/api/users/signup", {
+        userName: this.state.userName,
+        email: this.state.email,
+        password: this.state.password
+      })
+      .then(response => {
+        this.setState({ isLoggedIn: true });
+        window.location.href = "http://localhost:3000/";
+        alert(`a user has been signup`);
+      })
+      .catch(err => console.log(err));
+  };
+
+  handleLogOut = () => {
+    this.setState({
+      email: "",
+      password: "",
+      isLoggedIn: false
+    });
+    localStorage.clear();
+  };
+
+  handleLogIn = e => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:3001/api/users/login", {
+        email: this.state.email,
+        password: this.state.password
+      })
+      .then(response => {
+        localStorage.token = response.data.token;
+        this.setState({ isLoggedIn: true });
+      })
+      .catch(err => console.log(err));
+  };
 
   render() {
-    console.log(this.state);
     return (
       <div className="App">
-        <nav>
-          <Link to="/" className="navitem navitem1">
-            <h2>Animeme</h2>
-          </Link>
-          <Link to="/" className="navitem navitem4">
-            <h3>Home</h3>
-          </Link>
-          <Link to="/search" className="navitem navitem5">
-            <h3>Search</h3>
-          </Link>
-          <Link to="/login" className="navitem navitem6">
-            <h3>Login</h3>
-          </Link>
-        </nav>
+        <Navbar state={this.state} />
         <main>
           <Route
             path="/"
@@ -75,7 +112,24 @@ class App extends Component {
             path="/login"
             exact
             render={routeProps => (
-              <Login animes={this.state.animes} {...routeProps} />
+              <Login
+                isLoggedIn={this.state.isLoggedIn}
+                handleInput={this.handleInput}
+                handleLogIn={this.handleLogIn}
+                {...routeProps}
+              />
+            )}
+          />
+          <Route
+            path="/signup"
+            exact
+            render={routeProps => (
+              <Signup
+                isLoggedIn={this.state.isLoggedIn}
+                handleInput={this.handleInput}
+                handleSignUp={this.handleSignUp}
+                {...routeProps}
+              />
             )}
           />
         </main>
