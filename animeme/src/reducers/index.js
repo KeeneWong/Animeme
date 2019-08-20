@@ -1,8 +1,8 @@
-import { combineReducers as combine } from "redux";
-import { animeReducer as anime } from "./anime.js";
-import { userReducer as user } from "./user.js";
+import { combineReducers } from "redux";
+import animeReducer from "./anime.js";
+import userReducer from "./user.js";
 
-export default combine({
-  anime,
-  user
+export default combineReducers({
+  animeReducer,
+  userReducer
 });
