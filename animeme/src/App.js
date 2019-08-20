@@ -46,7 +46,7 @@ class App extends Component {
   handleSignUp = e => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/api/users/signup", {
+      .post("https://animeme-api.herokuapp.com/api/users/signup", {
         userName: this.state.userName,
         email: this.state.email,
         password: this.state.password
@@ -71,7 +71,7 @@ class App extends Component {
   handleLogIn = e => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/api/users/login", {
+      .post("https://animeme-api.herokuapp.com/api/users/login", {
         email: this.state.email,
         password: this.state.password
       })
