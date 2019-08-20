@@ -8,6 +8,7 @@ import Login from "./component/Login/Login";
 import axios from "axios";
 import Signup from "./component/SignUp/Signup";
 import Navbar from "./component/Navbar/Navbar";
+import UserFavourite from "./component/UserFavourite/UserFavourite";
 
 // const data = require("./animeData.json");
 
@@ -131,6 +132,11 @@ class App extends Component {
                 {...routeProps}
               />
             )}
+          />
+          <Route
+            path="/favourite"
+            exact
+            render={routeProps => <UserFavourite {...routeProps} />}
           />
         </main>
       </div>

@@ -12,8 +12,10 @@ class Navbar extends Component {
           <Link to="/" className="navitem navitem1">
             <h2>Animeme</h2>
           </Link>
-          <h3>{checkstatus}</h3>
-          {/* <h3>{this.props.state.email}</h3> */}
+          {/* <h3>{checkstatus}</h3> */}
+          <Link to="/favourite" className="navitem navitem3">
+            <h3>User Favourite</h3>
+          </Link>
           <Link to="/" className="navitem navitem4">
             <h3>Home</h3>
           </Link>
@@ -33,7 +35,7 @@ class Navbar extends Component {
           <Link to="/" className="navitem navitem1">
             <h2>Animeme</h2>
           </Link>
-          <h3>{checkstatus}</h3>
+          {/* <h3>{checkstatus}</h3> */}
           {/* <h3>{this.props.state.email}</h3> */}
           <Link to="/" className="navitem navitem4">
             <h3>Home</h3>
