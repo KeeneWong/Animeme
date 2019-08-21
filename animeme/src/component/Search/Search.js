@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "./Search.css";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-class Search extends Component {
+class SearchResults extends Component {
   constructor() {
     super();
     this.state = {
@@ -18,6 +19,7 @@ class Search extends Component {
   render() {
     let result = [];
     let displayresult;
+    console.log(this.props.animes);
     this.props.animes.forEach(each => {
       if (each.titles.en_jp === undefined) {
         // console.log(`nothing`);
@@ -66,4 +68,9 @@ class Search extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  animes: state.anime.animes
+});
+
+const Search = connect(mapStateToProps)(SearchResults);
 export default Search;

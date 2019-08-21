@@ -92,19 +92,13 @@ class App extends Component {
       <div className="App">
         <Navbar state={this.state} handleLogOut={this.handleLogOut} />
         <main>
-          <Route path="/" exact render={routeProps => <Home />} />
+          <Route path="/" exact render={() => <Home />} />
           <Route
             path="/animes/:animeName"
             exact
             render={routeProps => <AnimeDetail {...routeProps} />}
           />
-          <Route
-            path="/search"
-            exact
-            render={routeProps => (
-              <Search animes={this.state.animes} {...routeProps} />
-            )}
-          />
+          <Route path="/search" exact render={() => <Search />} />
 
           <Route
             path="/login"
