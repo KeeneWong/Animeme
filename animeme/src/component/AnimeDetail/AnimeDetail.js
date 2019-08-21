@@ -79,6 +79,21 @@ class AnimeDetail extends Component {
           Add To Favorite
         </h3>
       ];
+      let thisanime = this.props.animes.filter(each => {
+        //return the single anime that match the params
+        return each.titles.en_jp === this.props.match.params.animeName;
+      });
+
+      axios
+        .get(
+          "https://animeme-api.herokuapp.com/api/users/ref/" + this.props.email
+        )
+        .then(res => {
+          if (res.data.favorites.indexOf(thisanime[0]._id) !== -1) {
+            document.querySelector(".addbutton").classList.toggle("green");
+            document.querySelector(".addbutton").innerText = "Added";
+          }
+        });
     } else if (this.props.isLoggedIn === false) {
       buttons = [
         <Link to="/">
