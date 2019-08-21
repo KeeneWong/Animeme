@@ -3,6 +3,6 @@ import animeReducer from "./anime.js";
 import userReducer from "./user.js";
 
 export default combineReducers({
-  animeReducer,
-  userReducer
+  anime: animeReducer,
+  users: userReducer
 });

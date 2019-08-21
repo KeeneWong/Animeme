@@ -31,7 +31,7 @@ async function getUsers() {
   }
 }
 
-getUsers().then(user => {
+getUsers().then(res => {
   let userList = res.map(user => {
     let current = {
       userName: user.userName,
