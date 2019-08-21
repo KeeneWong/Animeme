@@ -75,3 +75,15 @@
   border: 4px solid rgba(255, 255, 255, 0.479);
   margin: 10px;
 }
+
+.overflow {
+  overflow: scroll;
+}
+
+.synopsis {
+  /* border: 4px solid yellow; */
+  height: 40vh;
+  border-radius: 20px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.74);
+}

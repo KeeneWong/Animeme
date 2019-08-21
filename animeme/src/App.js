@@ -29,7 +29,6 @@ class App extends Component {
     axios
       .get("https://animeme-api.herokuapp.com/api/anime")
       .then(all => {
-        // console.log(allchamp.data);
         this.setState({ animes: all.data });
         // console.log(all.data);
       })
@@ -91,6 +90,7 @@ class App extends Component {
   };
 
   render() {
+    // console.log(this.state.animes);
     return (
       <div className="App">
         <Navbar state={this.state} handleLogOut={this.handleLogOut} />
@@ -106,7 +106,11 @@ class App extends Component {
             path="/animes/:animeName"
             exact
             render={routeProps => (
-              <AnimeDetail animes={this.state.animes} {...routeProps} />
+              <AnimeDetail
+                animes={this.state.animes}
+                isLoggedIn={this.state.isLoggedIn}
+                {...routeProps}
+              />
             )}
           />
           <Route
