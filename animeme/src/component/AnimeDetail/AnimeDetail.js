@@ -65,6 +65,38 @@ class AnimeDetail extends Component {
       });
   };
 
+  deletefromFavorites = () => {
+    let thisanime = this.props.animes.filter(each => {
+      //return the single anime that match the params
+      return each.titles.en_jp === this.props.match.params.animeName;
+    });
+
+    axios
+      .get(
+        "https://animeme-api.herokuapp.com/api/users/ref/" + this.props.email
+      )
+      .then(res => {
+        let index = res.data.favorites.indexOf(thisanime[0]._id);
+        // console.log(index);
+        let newfavorites = res.data.favorites;
+        newfavorites.splice(index, 1);
+        console.log(newfavorites);
+        axios
+          .put(
+            //it use the props that pass down  by App.js
+            "https://animeme-api.herokuapp.com/api/users/acc/" +
+              this.props.email,
+            {
+              //set the database
+              favorites: newfavorites
+            }
+          )
+          .then(res => {
+            console.log(res);
+          });
+      });
+  };
+
   render() {
     let buttons;
     let thisanime = this.props.animes.filter(each => {
@@ -77,6 +109,12 @@ class AnimeDetail extends Component {
         </Link>,
         <h3 class="backbutton addbutton" onClick={this.setstateofFavorites}>
           Add To Favorite
+        </h3>,
+        <h3
+          class="backbutton deletebutton hidden"
+          onClick={this.deletefromFavorites}
+        >
+          Delete
         </h3>
       ];
       let thisanime = this.props.animes.filter(each => {
@@ -92,6 +130,7 @@ class AnimeDetail extends Component {
           if (res.data.favorites.indexOf(thisanime[0]._id) !== -1) {
             document.querySelector(".addbutton").classList.toggle("green");
             document.querySelector(".addbutton").innerText = "Added";
+            document.querySelector(".deletebutton").classList.remove("hidden");
           }
         });
     } else if (this.props.isLoggedIn === false) {
@@ -120,7 +159,7 @@ class AnimeDetail extends Component {
         <div class="rightDetail">
           <h1>{thisanime[0].titles.en_jp}</h1>
           <h3 className="overflow synopsis">{thisanime[0].synopsis}</h3>
-          <div>{buttons}</div>
+          <div className="buttondiv">{buttons}</div>
           {/* <h2>{this.state.favorites[0]}</h2>
           <h2>{this.state.favorites[1]}</h2> */}
         </div>
