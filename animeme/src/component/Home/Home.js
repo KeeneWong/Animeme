@@ -4,11 +4,11 @@ import AnimeDiv from "../AnimeDiv/AnimeDiv";
 
 class Home extends Component {
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     let animes = this.props.animes.map(each => {
       return <AnimeDiv key={each._id} animes={each} />;
     });
-    return <div class="allanimes">{animes}</div>;
+    return <div className="allanimes">{animes}</div>;
   }
 }
 
