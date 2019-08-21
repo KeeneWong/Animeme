@@ -1,22 +1,23 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Home.css";
 import AnimeDiv from "../AnimeDiv/AnimeDiv";
 import { connect } from "react-redux";
 
-const HomeDisplay = ({ animes }) => {
-  return (
-    <div className="allanimes">
-      {animes.animes.map((anime, index) => (
-        <AnimeDiv key={anime._id} animes={anime} />
-      ))}
-      {animes.titles}
-    </div>
-  );
-};
+class HomeDisplay extends Component {
+  render() {
+    return (
+      <div className="allanimes">
+        {this.props.animes.map(anime => (
+          <AnimeDiv key={anime._id} animes={anime} />
+        ))}
+      </div>
+    );
+  }
+}
 
-const mapStateToProps = state => ({
-  animes: state.anime
-});
+function mapStateToProps(state) {
+  return { animes: state.anime.animes };
+}
 
 const Home = connect(mapStateToProps)(HomeDisplay);
 export default Home;

@@ -19,13 +19,12 @@ class Search extends Component {
     let result = [];
     let displayresult;
     this.props.animes.forEach(each => {
-      //   console.log(each.titles.en_jp);
       if (each.titles.en_jp === undefined) {
-        console.log(`nothing`);
+        // console.log(`nothing`);
         return;
       }
       if (each.titles.en_jp.includes(this.state.searchvalue)) {
-        console.log("match");
+        // console.log("match");
         result.push(each);
       }
     });
@@ -48,13 +47,12 @@ class Search extends Component {
         </Link>
       ));
     } else {
-      displayresult = <div class="pika" />;
+      displayresult = <div className="pika" />;
     }
 
     return (
-      <div class="searchmain">
+      <div className="searchmain">
         <h1>search</h1>
-        {/* <h2>{this.state.searchvalue}</h2> */}
         <h2>{this.state.result}</h2>
 
         <input
@@ -62,11 +60,6 @@ class Search extends Component {
           placeholder="anime name"
           onChange={this.updatesearch}
         />
-        {/* <button className="searchbutton" onClick={this.updateresult}>
-          Search
-        </button> */}
-        {/* <div class="pika" /> */}
-
         <div>{displayresult}</div>
       </div>
     );

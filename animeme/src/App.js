@@ -11,8 +11,6 @@ import Navbar from "./component/Navbar/Navbar";
 import UserFavourite from "./component/UserFavourite/UserFavourite";
 import { withRouter } from "react-router-dom";
 
-// const data = require("./animeData.json");
-
 class App extends Component {
   constructor() {
     super();
@@ -26,17 +24,16 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get("https://animeme-api.herokuapp.com/api/anime")
-      .then(all => {
-        // console.log(allchamp.data);
-        this.setState({ animes: all.data });
-        // console.log(all.data);
-      })
-      .catch(err => {
-        console.error(err);
-      });
+    // axios
+    //   .get("https://animeme-api.herokuapp.com/api/anime")
+    //   .then(all => {
+    //     this.setState({ animes: all.data });
+    //   })
+    //   .catch(err => {
+    //     console.error(err);
+    //   });
   }
+
   handleInput = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -95,19 +92,11 @@ class App extends Component {
       <div className="App">
         <Navbar state={this.state} handleLogOut={this.handleLogOut} />
         <main>
-          <Route
-            path="/"
-            exact
-            render={routeProps => (
-              <Home animes={this.state.animes} {...routeProps} />
-            )}
-          />
+          <Route path="/" exact render={routeProps => <Home />} />
           <Route
             path="/animes/:animeName"
             exact
-            render={routeProps => (
-              <AnimeDetail animes={this.state.animes} {...routeProps} />
-            )}
+            render={routeProps => <AnimeDetail {...routeProps} />}
           />
           <Route
             path="/search"

@@ -37,7 +37,7 @@ class Navbar extends Component {
         <nav>
           <Link to="/" className="navitem navitem1">
             <h2>
-              <span class="red">A</span>nimeme
+              <span className="red">A</span>nimeme
             </h2>
           </Link>
           {/* <h3>{checkstatus}</h3> */}
