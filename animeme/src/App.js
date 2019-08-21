@@ -40,7 +40,6 @@ class App extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this);
   };
 
   handleSignUp = e => {
@@ -109,6 +108,7 @@ class App extends Component {
               <AnimeDetail
                 animes={this.state.animes}
                 isLoggedIn={this.state.isLoggedIn}
+                email={this.state.email}
                 {...routeProps}
               />
             )}
@@ -148,7 +148,9 @@ class App extends Component {
           <Route
             path="/favourite"
             exact
-            render={routeProps => <UserFavourite {...routeProps} />}
+            render={routeProps => (
+              <UserFavourite email={this.state.email} {...routeProps} />
+            )}
           />
         </main>
       </div>

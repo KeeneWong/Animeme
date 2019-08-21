@@ -6,7 +6,10 @@ class AnimeDiv extends Component {
   render() {
     // console.log(this.props);
     return (
-      <Link to={"/animes/" + this.props.animes.titles.en_jp}>
+      <Link
+        class="animedivcontain"
+        to={"/animes/" + this.props.animes.titles.en_jp}
+      >
         <div
           class="animediv"
           style={{

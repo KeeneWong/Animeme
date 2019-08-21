@@ -1,5 +1,5 @@
 .animediv {
-  /* width: 250px; */
+  width: 200px;
   height: 335px;
   display: flex;
   flex-direction: column;
@@ -16,4 +16,10 @@
 
 .animediv:hover {
   box-shadow: 0px 0px 20px 10px rgba(150, 177, 218, 0.993);
+}
+
+.animedivcontain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
