@@ -1,26 +1,30 @@
 import {
   CREATE_USER,
   UPDATE_USER,
-  REMOVE_USER
+  REMOVE_USER,
+  SIGN_IN
 } from "../constants/userList.js";
 import axios from "axios";
-const searchUrl = "https://animeme-api.herokuapp.com/api/users";
+const loginUrl = "https://animeme-api.herokuapp.com/api/users/login";
 
 let users = [];
 
 var DEFAULT_STATE = {
-  users
+  users,
+  isLoggedIn: false
 };
 
-async function getUsers() {
+async function login(email, password) {
   try {
     let res = await axios({
-      url: searchUrl,
-      method: "get",
+      url: loginUrl,
+      method: "post",
       timeout: 1000,
       headers: {
         "Content-Type": "application/json"
-      }
+      },
+      email: email,
+      password: password
     });
     if (res.status === 200) {
       console.log(res.status);
@@ -31,21 +35,21 @@ async function getUsers() {
   }
 }
 
-getUsers().then(res => {
-  let userList = res.map(user => {
-    let current = {
-      userName: user.userName,
-      password: user.password,
-      email: user.password,
-      favorites: user.favorites,
-      currentlyWatching: user.currentlyWatching
-    };
-    return current;
-  });
-  userList.forEach(user => {
-    users.push(user);
-  });
-});
+// getUsers().then(res => {
+//   let userList = res.map(user => {
+//     let current = {
+//       userName: user.userName,
+//       password: user.password,
+//       email: user.password,
+//       favorites: user.favorites,
+//       currentlyWatching: user.currentlyWatching
+//     };
+//     return current;
+//   });
+//   userList.forEach(user => {
+//     users.push(user);
+//   });
+// });
 
 export default function userReducer(state = DEFAULT_STATE, action) {
   switch (action.type) {
@@ -74,6 +78,8 @@ export default function userReducer(state = DEFAULT_STATE, action) {
           return id !== action.payload;
         })
       };
+    case SIGN_IN:
+      return {};
     default:
       return state;
   }

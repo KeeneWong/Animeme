@@ -23,17 +23,6 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-    // axios
-    //   .get("https://animeme-api.herokuapp.com/api/anime")
-    //   .then(all => {
-    //     this.setState({ animes: all.data });
-    //   })
-    //   .catch(err => {
-    //     console.error(err);
-    //   });
-  }
-
   handleInput = e => {
     this.setState({
       [e.target.name]: e.target.value
