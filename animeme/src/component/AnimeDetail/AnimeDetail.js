@@ -55,7 +55,7 @@ class AnimeDetail extends Component {
           this.setState({
             favorites: originalfav
           });
-          // updateFavorite();
+          this.updateFavorite();
         } else if (res.data.favorites.indexOf(this.state.anime_id) !== -1) {
           alert(`This anime has been already added to your favorites list`);
         }
@@ -75,7 +75,7 @@ class AnimeDetail extends Component {
         <Link to="/">
           <h3 class="backbutton">Back</h3>
         </Link>,
-        <h3 class="backbutton addbutton" onClick={this.updateFavorite}>
+        <h3 class="backbutton addbutton" onClick={this.setstateofFavorites}>
           Add To Favorite
         </h3>
       ];

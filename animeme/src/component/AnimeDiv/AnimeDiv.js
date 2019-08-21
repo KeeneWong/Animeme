@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 class AnimeDiv extends Component {
   render() {
     // console.log(this.props);
+
     return (
       <Link
         class="animedivcontain"
