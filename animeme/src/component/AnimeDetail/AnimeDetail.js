@@ -14,8 +14,9 @@ class AnimeDetail extends Component {
 
   //this is a function that take the favorites state to update the database user's favorites animes
   updateFavorite = () => {
-    document.querySelector(".addbutton").classList.toggle("green");
+    document.querySelector(".addbutton").classList.add("green");
     document.querySelector(".addbutton").innerText = "Added";
+    document.querySelector(".deletebutton").classList.remove("hidden");
     axios
       .put(
         //it use the props that pass down  by App.js
@@ -66,6 +67,9 @@ class AnimeDetail extends Component {
   };
 
   deletefromFavorites = () => {
+    document.querySelector(".deletebutton").classList.add("hidden");
+    document.querySelector(".addbutton").classList.remove("green");
+    document.querySelector(".addbutton").innerText = "Add To Favorite";
     let thisanime = this.props.animes.filter(each => {
       //return the single anime that match the params
       return each.titles.en_jp === this.props.match.params.animeName;
@@ -128,7 +132,7 @@ class AnimeDetail extends Component {
         )
         .then(res => {
           if (res.data.favorites.indexOf(thisanime[0]._id) !== -1) {
-            document.querySelector(".addbutton").classList.toggle("green");
+            document.querySelector(".addbutton").classList.add("green");
             document.querySelector(".addbutton").innerText = "Added";
             document.querySelector(".deletebutton").classList.remove("hidden");
           }
