@@ -61,6 +61,7 @@ class App extends Component {
         <Navbar />
         <main>
           <Route path="/" exact render={() => <Home />} />
+
           <Route
             path="/animes/:animeName"
             exact
