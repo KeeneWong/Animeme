@@ -1,18 +1,32 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import "./Navbar.css";
+import { signOut } from "../../actions/userList";
 
-class Navbar extends Component {
+class Nav extends Component {
+  handleLogOut = () => {
+    this.props.logout();
+  };
+
+  componentDidMount() {
+    console.log(this.props.user);
+  }
+
+  componentDidUpdate() {
+    console.log(this.props.user);
+  }
+
   render() {
     let checkstatus;
     let navrender;
-    if (this.props.state.isLoggedIn === true) {
+    if (this.props.user.isLoggedIn === true) {
       checkstatus = "true";
       navrender = [
         <nav>
           <Link to="/" className="navitem navitem1">
             <h2>
-              <span class="red">A</span>nimeme
+              <span className="red">A</span>nimeme
             </h2>
           </Link>
           {/* <h3>{checkstatus}</h3> */}
@@ -26,12 +40,12 @@ class Navbar extends Component {
             <h3>Search</h3>
           </Link>
           <Link to="/" className="navitem navitem6">
-            <h3 onClick={this.props.handleLogOut}>Logout</h3>
+            <h3 onClick={this.handleLogOut}>Logout</h3>
           </Link>
         </nav>
       ];
     }
-    if (this.props.state.isLoggedIn === false) {
+    if (this.props.user.isLoggedIn === false) {
       checkstatus = "false";
       navrender = [
         <nav>
@@ -58,4 +72,18 @@ class Navbar extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return { user: state.users };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    logout: () => dispatch(signOut())
+  };
+}
+
+const Navbar = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Nav);
 export default Navbar;

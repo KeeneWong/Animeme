@@ -2,29 +2,29 @@ import {
   CREATE_USER,
   UPDATE_USER,
   REMOVE_USER,
-  SIGN_IN
+  SIGN_IN,
+  SIGN_OUT
 } from "../constants/userList.js";
 import axios from "axios";
-const loginUrl = "https://animeme-api.herokuapp.com/api/users/login";
+const searchUrl = "https://animeme-api.herokuapp.com/api/users/";
 
 let users = [];
 
 var DEFAULT_STATE = {
+  currentUser: [],
   users,
   isLoggedIn: false
 };
 
-async function login(email, password) {
+async function getUsers() {
   try {
     let res = await axios({
-      url: loginUrl,
-      method: "post",
+      url: searchUrl,
+      method: "get",
       timeout: 1000,
       headers: {
         "Content-Type": "application/json"
-      },
-      email: email,
-      password: password
+      }
     });
     if (res.status === 200) {
       console.log(res.status);
@@ -35,21 +35,20 @@ async function login(email, password) {
   }
 }
 
-// getUsers().then(res => {
-//   let userList = res.map(user => {
-//     let current = {
-//       userName: user.userName,
-//       password: user.password,
-//       email: user.password,
-//       favorites: user.favorites,
-//       currentlyWatching: user.currentlyWatching
-//     };
-//     return current;
-//   });
-//   userList.forEach(user => {
-//     users.push(user);
-//   });
-// });
+getUsers().then(res => {
+  let userList = res.map(user => {
+    let current = {
+      userName: user.userName,
+      email: user.email,
+      favorites: user.favorites,
+      currentlyWatching: user.currentlyWatching
+    };
+    return current;
+  });
+  userList.forEach(user => {
+    users.push(user);
+  });
+});
 
 export default function userReducer(state = DEFAULT_STATE, action) {
   switch (action.type) {
@@ -78,8 +77,22 @@ export default function userReducer(state = DEFAULT_STATE, action) {
           return id !== action.payload;
         })
       };
-    case SIGN_IN:
-      return {};
+    case SIGN_IN: {
+      return {
+        ...state,
+        isLoggedIn: true,
+        currentUser: users.filter(user => {
+          return user.email === action.payload.email;
+        })
+      };
+    }
+    case SIGN_OUT: {
+      return {
+        ...state,
+        isLoggedIn: false,
+        currentUser: []
+      };
+    }
     default:
       return state;
   }
