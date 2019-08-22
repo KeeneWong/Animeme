@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import AnimeDiv from "../AnimeDiv/AnimeDiv";
 import axios from "axios";
 import "../AnimeDiv/AnimeDiv.css";
+import "./UserFavourite.css";
 
 class UserFavourite extends Component {
   constructor() {

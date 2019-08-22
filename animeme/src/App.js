@@ -36,6 +36,7 @@ class App extends Component {
         console.error(err);
       });
   }
+
   handleInput = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -101,6 +102,7 @@ class App extends Component {
               <Home animes={this.state.animes} {...routeProps} />
             )}
           />
+
           <Route
             path="/animes/:animeName"
             exact
@@ -113,6 +115,7 @@ class App extends Component {
               />
             )}
           />
+
           <Route
             path="/search"
             exact
@@ -133,6 +136,7 @@ class App extends Component {
               />
             )}
           />
+
           <Route
             path="/signup"
             exact
@@ -145,6 +149,7 @@ class App extends Component {
               />
             )}
           />
+
           <Route
             path="/favourite"
             exact
