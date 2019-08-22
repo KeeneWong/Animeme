@@ -4,6 +4,10 @@
   align-items: center;
 }
 
+.searchh1 {
+  margin-bottom: 0px;
+}
+
 .searchfield {
   background: rgba(0, 0, 0, 0.623);
   height: 30px;
@@ -19,18 +23,19 @@
   background-color: rgba(255, 255, 255, 0.288);
   border-radius: 5px;
   padding: 5px;
-  border: 4px solid rgba(255, 255, 255, 0.479);
+  border: 2px solid rgba(255, 255, 255, 0.479);
   margin: 10px;
 }
 
 .searchResultdiv {
   height: 150px;
-  width: 50vw;
+  width: 70vw;
   margin-top: 20px;
-  border: 2px solid white;
+  border: 1px solid white;
   border-radius: 15px;
   display: grid;
   grid-template-columns: 3fr 7fr;
+  background-color: rgba(0, 0, 0, 0.562);
 }
 
 .searchResultdiv:hover {
@@ -39,6 +44,9 @@
 
 .searchinfo h5 {
   margin: 5px;
+}
+.searchinfo h3 {
+  margin: 10px;
 }
 
 .iconimage {
@@ -56,4 +64,31 @@
   background-image: url("../../img/pokemon.gif");
   border-radius: 10px;
   border: 2px solid rgba(255, 255, 255, 0.425);
+}
+
+@media only screen and (max-width: 620px) {
+  .searchinfo h3 {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .searchResultdiv {
+    height: 365px;
+    padding: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr;
+  }
+
+  .iconimage {
+    height: 250px;
+    width: 70vw;
+    display: block;
+    border-radius: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* .searchinfo; */
 }
