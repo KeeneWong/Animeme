@@ -53,10 +53,31 @@ getUsers().then(res => {
 export default function userReducer(state = DEFAULT_STATE, action) {
   switch (action.type) {
     case CREATE_USER:
+      async function addUser() {
+        await axios
+          .post("https://animeme-api.herokuapp.com/api/users/signup", {
+            userName: action.payload.userName,
+            email: action.payload.email,
+            password: action.payload.password
+          })
+          .then(response => {
+            alert(`a user has been signup`);
+          })
+          .catch(err => {
+            alert(`Invaild information`);
+            console.log(err);
+          });
+      }
+      addUser();
       return {
         ...state,
-        users: [...state.users, action.payload]
+        isLoggedIn: true,
+        users: [...state.users, action.payload],
+        currentUser: users.filter(user => {
+          return user.email === action.payload.email;
+        })
       };
+      break;
     case UPDATE_USER:
       return {
         ...state,

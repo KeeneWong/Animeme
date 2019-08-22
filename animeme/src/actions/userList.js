@@ -6,7 +6,7 @@ import {
   SIGN_OUT
 } from "../constants/userList.js";
 
-export function createNewUser(userName, password, email) {
+export function createNewUser(email, userName, password) {
   return {
     type: CREATE_USER,
     payload: {
