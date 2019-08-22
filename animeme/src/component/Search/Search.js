@@ -19,12 +19,11 @@ class Search extends Component {
     let result = [];
     let displayresult;
     this.props.animes.forEach(each => {
-      //   console.log(each.titles.en_jp);
       if (each.titles.en_jp === undefined) {
         console.log(`nothing`);
         return;
       }
-      if (each.titles.en_jp.includes(this.state.searchvalue)) {
+      if (each.titles.en_jp.toLowerCase().includes(this.state.searchvalue)) {
         console.log("match");
         result.push(each);
       }
