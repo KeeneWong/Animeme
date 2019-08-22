@@ -169,3 +169,7 @@
     font-size: 12px;
   }
 }
+
+.dropdown-content {
+  z-index: 1;
+}
