@@ -13,6 +13,10 @@ class Details extends Component {
     };
   }
 
+  componentDidMount() {
+    console.log(this.props);
+  }
+
   //this is a function that take the favorites state to update the database user's favorites animes
   updateFavorite = () => {
     document.querySelector(".addbutton").classList.add("green");
@@ -110,13 +114,13 @@ class Details extends Component {
     if (this.props.isLoggedIn === true) {
       buttons = [
         <Link to="/">
-          <h3 class="backbutton">Back</h3>
+          <h3 className="backbutton">Back</h3>
         </Link>,
-        <h3 class="backbutton addbutton" onClick={this.setstateofFavorites}>
+        <h3 className="backbutton addbutton" onClick={this.setstateofFavorites}>
           Add To Favorite
         </h3>,
         <h3
-          class="backbutton deletebutton hidden"
+          className="backbutton deletebutton hidden"
           onClick={this.deletefromFavorites}
         >
           Delete
@@ -145,7 +149,6 @@ class Details extends Component {
         </Link>
       ];
     }
-
     return (
       <div>
         {thisanime.map(anime => (
@@ -179,7 +182,8 @@ class Details extends Component {
 }
 
 const mapStateToProps = state => ({
-  animes: state.anime.animes
+  animes: state.anime.animes,
+  isLoggedIn: state.users.isLoggedIn
 });
 
 const AnimeDetail = connect(mapStateToProps)(Details);
