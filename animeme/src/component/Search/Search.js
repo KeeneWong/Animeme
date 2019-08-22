@@ -53,7 +53,7 @@ class Search extends Component {
 
     return (
       <div class="searchmain">
-        <h1>search</h1>
+        <h1 className="searchh1">search</h1>
         {/* <h2>{this.state.searchvalue}</h2> */}
         <h2>{this.state.result}</h2>
 
