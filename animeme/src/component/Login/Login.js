@@ -96,4 +96,5 @@ const Login = connect(
   mapStateToProps,
   mapDispatchToProps
 )(LoginScreen);
+
 export default Login;

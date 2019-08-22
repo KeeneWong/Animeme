@@ -9,14 +9,6 @@ class Nav extends Component {
     this.props.logout();
   };
 
-  componentDidMount() {
-    console.log(this.props.user);
-  }
-
-  componentDidUpdate() {
-    console.log(this.props.user);
-  }
-
   render() {
     let navrender;
 
@@ -46,9 +38,9 @@ class Nav extends Component {
           <Link to="/favourite" className="navitem navitem5 star">
             <h3>❤</h3>
           </Link>
-          <div class="dropdown navitem6">
-            <button class="dropbtn">Menu</button>
-            <div class="dropdown-content">
+          <div className="dropdown navitem6">
+            <button className="dropbtn">Menu</button>
+            <div className="dropdown-content">
               <Link to="/">
                 <a>Home</a>
               </Link>
@@ -85,9 +77,9 @@ class Nav extends Component {
           <Link to="/login" className="navitem navitem6">
             <h3>Login</h3>
           </Link>
-          <div class="dropdown navitem6">
-            <button class="dropbtn">Menu</button>
-            <div class="dropdown-content">
+          <div className="dropdown navitem6">
+            <button className="dropbtn">Menu</button>
+            <div className="dropdown-content">
               <Link to="/">
                 <a>Home</a>
               </Link>

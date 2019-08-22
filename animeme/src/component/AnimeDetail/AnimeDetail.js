@@ -111,7 +111,7 @@ class Details extends Component {
     let thisanime = this.props.animes.filter(each => {
       return each.titles.en_jp === this.props.match.params.animeName;
     });
-    if (this.props.isLoggedIn === true) {
+    if (this.props.user.isLoggedIn === true) {
       buttons = [
         <Link to="/">
           <h3 className="backbutton">Back</h3>
@@ -133,16 +133,17 @@ class Details extends Component {
 
       axios
         .get(
-          "https://animeme-api.herokuapp.com/api/users/ref/" + this.props.email
+          "https://animeme-api.herokuapp.com/api/users/ref/" +
+            this.props.user.currentUser[0].email
         )
         .then(res => {
-          if (res.data.favorites.indexOf(thisanime[0]._id) !== -1) {
+          if (res.data.favorites.includes(thisanime[0]._id)) {
             document.querySelector(".addbutton").classList.add("green");
             document.querySelector(".addbutton").innerText = "Added";
             document.querySelector(".deletebutton").classList.remove("hidden");
           }
         });
-    } else if (this.props.isLoggedIn === false) {
+    } else if (this.props.user.isLoggedIn === false) {
       buttons = [
         <Link to="/">
           <h3 class="backbutton">Back</h3>
@@ -183,7 +184,7 @@ class Details extends Component {
 
 const mapStateToProps = state => ({
   animes: state.anime.animes,
-  isLoggedIn: state.users.isLoggedIn
+  user: state.users
 });
 
 const AnimeDetail = connect(mapStateToProps)(Details);
