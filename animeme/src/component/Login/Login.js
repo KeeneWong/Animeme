@@ -13,6 +13,7 @@ class Login extends Component {
           <input
             className="loginfield"
             placeholder="email"
+            type="email"
             name="email"
             onChange={this.props.handleInput}
           />
@@ -20,6 +21,7 @@ class Login extends Component {
           <input
             className="loginfield"
             placeholder="password"
+            type="password"
             name="password"
             onChange={this.props.handleInput}
           />

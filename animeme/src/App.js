@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Link, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import "./App.css";
 import Home from "./component/Home/Home";
 import AnimeDetail from "./component/AnimeDetail/AnimeDetail";

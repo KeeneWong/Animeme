@@ -4,10 +4,10 @@ import "./Navbar.css";
 
 class Navbar extends Component {
   render() {
-    let checkstatus;
+    // let checkstatus;
     let navrender;
     if (this.props.state.isLoggedIn === true) {
-      checkstatus = "true";
+      // checkstatus = "true";
       navrender = [
         <nav>
           <Link to="/" className="navitem navitem1">
@@ -32,7 +32,7 @@ class Navbar extends Component {
       ];
     }
     if (this.props.state.isLoggedIn === false) {
-      checkstatus = "false";
+      // checkstatus = "false";
       navrender = [
         <nav>
           <Link to="/" className="navitem navitem1">

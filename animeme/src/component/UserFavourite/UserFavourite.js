@@ -37,7 +37,7 @@ class UserFavourite extends Component {
 
     return (
       <div>
-        <h1>User favourite page</h1>
+        <h1>User Favorite Animes</h1>
         <div className="allanimes">{userfavorites}</div>
       </div>
     );
