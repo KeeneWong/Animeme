@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
 import "./Signup.css";
 
 class Signup extends Component {
@@ -12,6 +11,7 @@ class Signup extends Component {
           <input
             className="loginfield"
             placeholder="email"
+            type="email"
             name="email"
             onChange={this.props.handleInput}
           />
@@ -26,6 +26,7 @@ class Signup extends Component {
           <input
             className="loginfield"
             placeholder="password"
+            type="password"
             name="password"
             onChange={this.props.handleInput}
           />

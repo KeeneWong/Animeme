@@ -24,11 +24,11 @@ class App extends Component {
     };
   }
 
+  s;
   handleInput = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this);
   };
 
   handleSignUp = e => {
@@ -55,6 +55,7 @@ class App extends Component {
   }
 
   render() {
+    // console.log(this.state.animes);
     return (
       <div className="App">
         <Navbar />
@@ -65,6 +66,7 @@ class App extends Component {
             exact
             render={routeProps => <AnimeDetail {...routeProps} />}
           />
+
           <Route path="/search" exact render={() => <Search />} />
 
           <Route
@@ -72,6 +74,7 @@ class App extends Component {
             exact
             render={routeProps => <Login {...routeProps} />}
           />
+
           <Route
             path="/signup"
             exact
@@ -84,10 +87,13 @@ class App extends Component {
               />
             )}
           />
+
           <Route
             path="/favourite"
             exact
-            render={routeProps => <UserFavourite {...routeProps} />}
+            render={routeProps => (
+              <UserFavourite email={this.state.email} {...routeProps} />
+            )}
           />
         </main>
       </div>

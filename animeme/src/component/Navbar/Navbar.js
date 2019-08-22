@@ -18,10 +18,9 @@ class Nav extends Component {
   }
 
   render() {
-    let checkstatus;
     let navrender;
+
     if (this.props.user.isLoggedIn === true) {
-      checkstatus = "true";
       navrender = [
         <nav>
           <Link to="/" className="navitem navitem1">
@@ -31,7 +30,9 @@ class Nav extends Component {
           </Link>
           {/* <h3>{checkstatus}</h3> */}
           <Link to="/favourite" className="navitem navitem3">
-            <h3>User Favourite</h3>
+            <h3>
+              Favourite <span className="heart">❤</span>
+            </h3>
           </Link>
           <Link to="/" className="navitem navitem4">
             <h3>Home</h3>
@@ -42,11 +43,30 @@ class Nav extends Component {
           <Link to="/" className="navitem navitem6">
             <h3 onClick={this.handleLogOut}>Logout</h3>
           </Link>
+          <Link to="/favourite" className="navitem navitem5 star">
+            <h3>❤</h3>
+          </Link>
+          <div class="dropdown navitem6">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+              <Link to="/">
+                <a>Home</a>
+              </Link>
+              <Link to="/search">
+                <a>Search</a>
+              </Link>
+              <Link to="/">
+                <a onClick={this.props.handleLogOut}>Logout</a>
+              </Link>
+            </div>
+          </div>
         </nav>
       ];
     }
+
     if (this.props.user.isLoggedIn === false) {
-      checkstatus = "false";
+      // checkstatus = "false";
+
       navrender = [
         <nav>
           <Link to="/" className="navitem navitem1">
@@ -65,6 +85,20 @@ class Nav extends Component {
           <Link to="/login" className="navitem navitem6">
             <h3>Login</h3>
           </Link>
+          <div class="dropdown navitem6">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+              <Link to="/">
+                <a>Home</a>
+              </Link>
+              <Link to="/search">
+                <a>Search</a>
+              </Link>
+              <Link to="/login">
+                <a>Login</a>
+              </Link>
+            </div>
+          </div>
         </nav>
       ];
     }

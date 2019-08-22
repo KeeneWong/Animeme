@@ -1,3 +1,140 @@
 .red {
   color: red;
 }
+
+nav {
+  background-color: rgb(0, 0, 0);
+  height: 8vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+}
+
+.navitem h3:hover {
+  box-shadow: 0px 0px 10px 2px rgba(150, 177, 218, 0.993);
+}
+
+.navitem3 {
+  grid-column: 3;
+}
+.navitem4 {
+  grid-column: 4;
+}
+.navitem5 {
+  grid-column: 5;
+}
+.navitem6 {
+  grid-column: 6;
+}
+.navitem h3 {
+  background-color: rgba(138, 138, 138, 0.199);
+  display: inline-block;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.heart {
+  color: rgba(255, 0, 0, 0.678);
+}
+
+.navitem1 {
+  grid-column: 1;
+  margin-left: 30px;
+}
+
+nav h2 {
+  margin: 0px;
+}
+.hiddeen {
+  display: none;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #35353591;
+  height: 40px;
+  width: 100px;
+  color: rgba(255, 255, 255, 0.897);
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: none;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  border-radius: 5px;
+  position: absolute;
+  width: 100px;
+  background-color: #222222d0;
+  color: rgba(255, 255, 255, 0.897);
+  min-width: 50px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: rgb(255, 255, 255);
+  padding: 9px 7px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: rgb(179, 179, 179);
+  color: rgb(36, 36, 36);
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #a3a3a386;
+}
+
+.star {
+  display: none;
+}
+
+.star h3 {
+  padding: 10px;
+  margin: 0;
+  color: rgba(255, 0, 0, 0.63);
+  margin-right: 7px;
+}
+
+@media only screen and (max-width: 628px) {
+  nav {
+    /* background-color: lightblue; */
+  }
+
+  .navitem3,
+  .navitem4,
+  .navitem5,
+  .navitem6 {
+    display: none;
+  }
+
+  .star {
+    display: inline-block;
+  }
+
+  .dropdown {
+    display: inline-block;
+  }
+}

@@ -55,6 +55,7 @@ class LoginScreen extends Component {
           <input
             className="loginfield"
             placeholder="email"
+            type="email"
             name="email"
             onChange={this.handleInput}
           />
@@ -62,6 +63,7 @@ class LoginScreen extends Component {
           <input
             className="loginfield"
             placeholder="password"
+            type="password"
             name="password"
             onChange={this.handleInput}
           />

@@ -5,7 +5,10 @@ import { Link } from "react-router-dom";
 class AnimeDiv extends Component {
   render() {
     return (
-      <Link to={"/animes/" + this.props.animes.titles.en_jp}>
+      <Link
+        class="animedivcontain"
+        to={"/animes/" + this.props.animes.titles.en_jp}
+      >
         <div
           className="animediv"
           style={{
