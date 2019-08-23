@@ -20,7 +20,6 @@ class FavouriteDisplay extends Component {
         if (this.props.user.currentUser.favorites.includes(each.id)) {
           return <AnimeDiv animes={each} />;
         }
-        return <div />;
       });
     }
 
