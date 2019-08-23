@@ -4,7 +4,7 @@ This website is a database of anime and users. the users will be able to create 
 
 ### Prerequisites
 
-- `npm`
+- node.js
 
 ### Installing
 
