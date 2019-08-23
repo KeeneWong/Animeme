@@ -8,11 +8,11 @@ class AnimeDiv extends Component {
 
     return (
       <Link
-        class="animedivcontain"
+        className="animedivcontain"
         to={"/animes/" + this.props.animes.titles.en_jp}
       >
         <div
-          class="animediv"
+          className="animediv"
           style={{
             backgroundImage: `url(${this.props.animes.images.medium})`
           }}

@@ -12,7 +12,7 @@ class Navbar extends Component {
         <nav>
           <Link to="/" className="navitem navitem1">
             <h2>
-              <span class="red">A</span>nimeme
+              <span className="red">A</span>nimeme
             </h2>
           </Link>
           {/* <h3>{checkstatus}</h3> */}
@@ -33,17 +33,17 @@ class Navbar extends Component {
           <Link to="/favourite" className="navitem navitem5 star">
             <h3>❤</h3>
           </Link>
-          <div class="dropdown navitem6">
-            <button class="dropbtn">Menu</button>
-            <div class="dropdown-content">
+          <div className="dropdown navitem6">
+            <button className="dropbtn">Menu</button>
+            <div className="dropdown-content">
               <Link to="/">
-                <a>Home</a>
+                <p>Home</p>
               </Link>
               <Link to="/search">
-                <a>Search</a>
+                <p>Search</p>
               </Link>
               <Link to="/">
-                <a onClick={this.props.handleLogOut}>Logout</a>
+                <p onClick={this.props.handleLogOut}>Logout</p>
               </Link>
             </div>
           </div>
@@ -56,7 +56,7 @@ class Navbar extends Component {
         <nav>
           <Link to="/" className="navitem navitem1">
             <h2>
-              <span class="red">A</span>nimeme
+              <span className="red">A</span>nimeme
             </h2>
           </Link>
           {/* <h3>{checkstatus}</h3> */}
@@ -70,17 +70,17 @@ class Navbar extends Component {
           <Link to="/login" className="navitem navitem6">
             <h3>Login</h3>
           </Link>
-          <div class="dropdown navitem6">
-            <button class="dropbtn">Menu</button>
-            <div class="dropdown-content">
+          <div className="dropdown navitem6">
+            <button className="dropbtn">Menu</button>
+            <div className="dropdown-content">
               <Link to="/">
-                <a>Home</a>
+                <p>Home</p>
               </Link>
               <Link to="/search">
-                <a>Search</a>
+                <p>Search</p>
               </Link>
               <Link to="/login">
-                <a>Login</a>
+                <p>Login</p>
               </Link>
             </div>
           </div>

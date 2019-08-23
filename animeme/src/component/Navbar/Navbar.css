@@ -86,7 +86,7 @@ nav h2 {
 }
 
 /* Links inside the dropdown */
-.dropdown-content a {
+.dropdown-content p {
   color: rgb(255, 255, 255);
   padding: 9px 7px;
   text-decoration: none;
@@ -95,7 +95,7 @@ nav h2 {
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {
+.dropdown-content p:hover {
   background-color: rgb(179, 179, 179);
   color: rgb(36, 36, 36);
 }

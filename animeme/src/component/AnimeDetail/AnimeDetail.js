@@ -109,13 +109,13 @@ class AnimeDetail extends Component {
     if (this.props.isLoggedIn === true) {
       buttons = [
         <Link to="/">
-          <h3 class="backbutton">Back</h3>
+          <h3 className="backbutton">Back</h3>
         </Link>,
-        <h3 class="backbutton addbutton" onClick={this.setstateofFavorites}>
+        <h3 className="backbutton addbutton" onClick={this.setstateofFavorites}>
           Add To Favorite
         </h3>,
         <h3
-          class="backbutton deletebutton hidden"
+          className="backbutton deletebutton hidden"
           onClick={this.deletefromFavorites}
         >
           Delete
@@ -140,27 +140,27 @@ class AnimeDetail extends Component {
     } else if (this.props.isLoggedIn === false) {
       buttons = [
         <Link to="/">
-          <h3 class="backbutton">Back</h3>
+          <h3 className="backbutton">Back</h3>
         </Link>
       ];
     }
 
     return (
       <div
-        class="animeDetail darken-pseudo darken-with-text"
+        className="animeDetail darken-pseudo darken-with-text"
         style={{
           backgroundImage: `url(${thisanime[0].images.original})`
         }}
       >
-        <div class="leftDetail">
+        <div className="leftDetail">
           <div
-            class="detailimg"
+            className="detailimg"
             style={{
               backgroundImage: `url(${thisanime[0].images.original})`
             }}
           />
         </div>
-        <div class="rightDetail">
+        <div className="rightDetail">
           <h1>{thisanime[0].titles.en_jp}</h1>
           <h3 className="overflow synopsis">{thisanime[0].synopsis}</h3>
           <div className="buttondiv">{buttons}</div>

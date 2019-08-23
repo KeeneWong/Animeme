@@ -8,7 +8,7 @@ class Home extends Component {
     let animes = this.props.animes.map(each => {
       return <AnimeDiv key={each._id} animes={each} />;
     });
-    return <div class="allanimes">{animes}</div>;
+    return <div className="allanimes">{animes}</div>;
   }
 }
 
