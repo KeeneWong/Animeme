@@ -13,7 +13,7 @@ class SearchResults extends Component {
   }
 
   updatesearch = e => {
-    this.setState({ searchvalue: e.target.value });
+    this.setState({ searchvalue: e.target.value.toLowerCase() });
   };
 
   render() {
@@ -23,7 +23,8 @@ class SearchResults extends Component {
       if (each.titles.en_jp === undefined) {
         return;
       }
-      if (each.titles.en_jp.includes(this.state.searchvalue)) {
+      let title = each.titles.en_jp.toLowerCase();
+      if (title.includes(this.state.searchvalue)) {
         result.push(each);
       }
     });
