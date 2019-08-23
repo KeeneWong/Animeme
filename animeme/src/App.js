@@ -5,11 +5,9 @@ import Home from "./component/Home/Home";
 import AnimeDetail from "./component/AnimeDetail/AnimeDetail";
 import Search from "./component/Search/Search";
 import Login from "./component/Login/Login";
-// import axios from "axios";
 import Signup from "./component/SignUp/Signup";
 import Navbar from "./component/Navbar/Navbar";
 import UserFavourite from "./component/UserFavourite/UserFavourite";
-// import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 class App extends Component {
@@ -20,16 +18,12 @@ class App extends Component {
       userName: "",
       email: "",
       password: ""
-      // isLoggedIn: false
     };
   }
 
-  componentDidMount() {
-    // console.log(this.props);
-  }
+  componentDidMount() {}
 
   render() {
-    // console.log(this.state.animes);
     return (
       <div className="App">
         <Navbar />
@@ -53,22 +47,13 @@ class App extends Component {
           <Route
             path="/signup"
             exact
-            render={routeProps => (
-              <Signup
-                // isLoggedIn={this.props.user.isLoggedIn}
-                // handleInput={this.handleInput}
-                // handleSignUp={this.handleSignUp}
-                {...routeProps}
-              />
-            )}
+            render={routeProps => <Signup {...routeProps} />}
           />
 
           <Route
             path="/favourite"
             exact
-            render={routeProps => (
-              <UserFavourite email={this.state.email} {...routeProps} />
-            )}
+            render={routeProps => <UserFavourite {...routeProps} />}
           />
         </main>
       </div>

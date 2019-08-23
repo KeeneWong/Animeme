@@ -52,7 +52,6 @@ class SearchResults extends Component {
     return (
       <div className="searchmain">
         <h1 className="searchh1">search</h1>
-        {/* <h2>{this.state.searchvalue}</h2> */}
         <h2>{this.state.result}</h2>
 
         <input

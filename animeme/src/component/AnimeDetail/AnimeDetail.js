@@ -10,14 +10,6 @@ import {
 } from "../../actions/userList";
 
 class Details extends Component {
-  constructor() {
-    super();
-  }
-
-  componentDidMount() {
-    // console.log(this.props);
-  }
-
   //this is a function that take the favorites state to update the database user's favorites animes
   updateFavorite = async () => {
     document.querySelector(".addbutton").classList.add("green");
@@ -48,18 +40,10 @@ class Details extends Component {
       //return the single anime that match the params
       return each.titles.en_jp === this.props.match.params.animeName;
     });
-
-    // console.log(
-    //   this.props.user.currentUser.favorites.includes(thisanime[0].id)
-    // );
     if (!this.props.user.currentUser.favorites.includes(thisanime[0].id)) {
       await this.props.addFavorite(thisanime[0].id);
       await this.updateFavorite();
-    }
-    // if (
-    //   this.props.user.currentUser.favorites.includes(thisanime[0].id)
-    // )
-    else {
+    } else {
       alert(`This anime has been already added to your favorites list`);
     }
   };
@@ -80,7 +64,6 @@ class Details extends Component {
       )
       .then(res => {
         let index = res.data.favorites.indexOf(thisanime[0].id);
-        // console.log(index);
         let newfavorites = res.data.favorites;
         newfavorites.splice(index, 1);
         this.props.removeFavorite(newfavorites);
@@ -125,9 +108,7 @@ class Details extends Component {
         //return the single anime that match the params
         return each.titles.en_jp === this.props.match.params.animeName;
       });
-      // console.log(
-      // this.props.user.currentUser.favorites.includes(thisanime[0].id)
-      // );
+
       axios
         .get(
           "https://animeme-api.herokuapp.com/api/users/ref/" +

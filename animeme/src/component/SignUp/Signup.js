@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import "./Signup.css";
 import { connect } from "react-redux";
 import { createNewUser } from "../../actions/userList";
-import axios from "axios";
 
 class SignupDisplay extends Component {
   constructor() {
@@ -28,21 +26,6 @@ class SignupDisplay extends Component {
       this.state.password
     );
     this.props.history.push("/");
-    // axios
-    //   .post("https://animeme-api.herokuapp.com/api/users/signup", {
-    //     userName: this.state.userName,
-    //     email: this.state.email,
-    //     password: this.state.password
-    //   })
-    //   .then(response => {
-    //     this.setState({ isLoggedIn: true });
-    //     alert(`a user has been signup`);
-    //     this.props.history.push("/");
-    //   })
-    //   .catch(err => {
-    //     alert(`Invaild information`);
-    //     console.log(err);
-    //   });
   };
 
   render() {

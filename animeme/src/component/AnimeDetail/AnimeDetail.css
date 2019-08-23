@@ -3,7 +3,6 @@
   height: 92vh;
   background-size: cover;
   background-position: center;
-  /* padding: 40px; */
   display: grid;
   grid-template-columns: 1fr 1.5fr;
 }
@@ -63,7 +62,6 @@
 }
 
 .rightDetail h3 {
-  /* width:  */
   text-align: left;
 }
 
@@ -102,7 +100,6 @@
 }
 
 .synopsis {
-  /* border: 4px solid yellow; */
   height: 40vh;
   border-radius: 20px;
   padding: 20px;
@@ -119,7 +116,6 @@
     height: 100%;
     background-size: cover;
     background-position: center;
-    /* padding: 40px; */
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1.7fr;

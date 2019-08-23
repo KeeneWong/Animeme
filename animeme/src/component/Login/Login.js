@@ -14,13 +14,7 @@ class LoginScreen extends Component {
     };
   }
 
-  componentDidMount() {
-    // console.log(this.props);
-  }
-
   handleLogIn = e => {
-    // this.props.login(this.state.email);
-    // console.log(this.props);
     e.preventDefault();
     axios
       .post("https://animeme-api.herokuapp.com/api/users/login", {
@@ -43,7 +37,6 @@ class LoginScreen extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    // console.log(this.state);
   };
 
   render() {

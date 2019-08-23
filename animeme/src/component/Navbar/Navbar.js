@@ -20,7 +20,6 @@ class Nav extends Component {
               <span className="red">A</span>nimeme
             </h2>
           </Link>
-          {/* <h3>{checkstatus}</h3> */}
           <Link to="/favourite" className="navitem navitem3">
             <h3>
               Favourite <span className="heart">❤</span>
@@ -57,8 +56,6 @@ class Nav extends Component {
     }
 
     if (this.props.user.isLoggedIn === false) {
-      // checkstatus = "false";
-
       navrender = [
         <nav>
           <Link to="/" className="navitem navitem1">
@@ -66,8 +63,6 @@ class Nav extends Component {
               <span className="red">A</span>nimeme
             </h2>
           </Link>
-          {/* <h3>{checkstatus}</h3> */}
-          {/* <h3>{this.props.state.email}</h3> */}
           <Link to="/" className="navitem navitem4">
             <h3>Home</h3>
           </Link>
