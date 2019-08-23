@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./Home.css";
 import AnimeDiv from "../AnimeDiv/AnimeDiv";
+import { connect } from "react-redux";
 
-class Home extends Component {
+class HomeDisplay extends Component {
   render() {
-    // console.log(this.props);
     let animes = this.props.animes.map(each => {
       return <AnimeDiv key={each._id} animes={each} />;
     });
@@ -12,4 +12,9 @@ class Home extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return { animes: state.anime.animes };
+}
+
+const Home = connect(mapStateToProps)(HomeDisplay);
 export default Home;

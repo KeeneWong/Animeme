@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import "./Navbar.css";
+import { signOut } from "../../actions/userList";
 
-class Navbar extends Component {
+class Nav extends Component {
+  handleLogOut = () => {
+    this.props.logout();
+  };
+
   render() {
-    // let checkstatus;
     let navrender;
-    if (this.props.state.isLoggedIn === true) {
-      // checkstatus = "true";
+
+    if (this.props.user.isLoggedIn === true) {
       navrender = [
         <nav>
           <Link to="/" className="navitem navitem1">
@@ -15,7 +20,6 @@ class Navbar extends Component {
               <span className="red">A</span>nimeme
             </h2>
           </Link>
-          {/* <h3>{checkstatus}</h3> */}
           <Link to="/favourite" className="navitem navitem3">
             <h3>
               Favourite <span className="heart">❤</span>
@@ -28,7 +32,7 @@ class Navbar extends Component {
             <h3>Search</h3>
           </Link>
           <Link to="/" className="navitem navitem6">
-            <h3 onClick={this.props.handleLogOut}>Logout</h3>
+            <h3 onClick={this.handleLogOut}>Logout</h3>
           </Link>
           <Link to="/favourite" className="navitem navitem5 star">
             <h3>❤</h3>
@@ -50,8 +54,8 @@ class Navbar extends Component {
         </nav>
       ];
     }
-    if (this.props.state.isLoggedIn === false) {
-      // checkstatus = "false";
+
+    if (this.props.user.isLoggedIn === false) {
       navrender = [
         <nav>
           <Link to="/" className="navitem navitem1">
@@ -59,8 +63,6 @@ class Navbar extends Component {
               <span className="red">A</span>nimeme
             </h2>
           </Link>
-          {/* <h3>{checkstatus}</h3> */}
-          {/* <h3>{this.props.state.email}</h3> */}
           <Link to="/" className="navitem navitem4">
             <h3>Home</h3>
           </Link>
@@ -91,4 +93,18 @@ class Navbar extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return { user: state.users };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    logout: () => dispatch(signOut())
+  };
+}
+
+const Navbar = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Nav);
 export default Navbar;

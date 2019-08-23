@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "./Search.css";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-class Search extends Component {
+class SearchResults extends Component {
   constructor() {
     super();
     this.state = {
@@ -12,7 +13,7 @@ class Search extends Component {
   }
 
   updatesearch = e => {
-    this.setState({ searchvalue: e.target.value });
+    this.setState({ searchvalue: e.target.value.toLowerCase() });
   };
 
   render() {
@@ -20,11 +21,11 @@ class Search extends Component {
     let displayresult;
     this.props.animes.forEach(each => {
       if (each.titles.en_jp === undefined) {
-        console.log(`nothing`);
         return;
       }
       if (each.titles.en_jp.toLowerCase().includes(this.state.searchvalue)) {
         console.log("match");
+
         result.push(each);
       }
     });
@@ -53,7 +54,6 @@ class Search extends Component {
     return (
       <div className="searchmain">
         <h1 className="searchh1">search</h1>
-        {/* <h2>{this.state.searchvalue}</h2> */}
         <h2>{this.state.result}</h2>
 
         <input
@@ -61,15 +61,23 @@ class Search extends Component {
           placeholder="anime name"
           onChange={this.updatesearch}
         />
+<<<<<<< HEAD
         {/* <button className="searchbutton" onClick={this.updateresult}>
           Search
         </button> */}
         {/* <div className="pika" /> */}
 
+=======
+>>>>>>> refs/remotes/origin/master
         <div>{displayresult}</div>
       </div>
     );
   }
 }
 
+const mapStateToProps = state => ({
+  animes: state.anime.animes
+});
+
+const Search = connect(mapStateToProps)(SearchResults);
 export default Search;
