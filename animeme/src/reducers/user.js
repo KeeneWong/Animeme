@@ -3,7 +3,8 @@ import {
   UPDATE_USER,
   REMOVE_USER,
   SIGN_IN,
-  SIGN_OUT
+  SIGN_OUT,
+  ADD_FAVORITE
 } from "../constants/userList.js";
 import axios from "axios";
 const searchUrl = "https://animeme-api.herokuapp.com/api/users/";
@@ -38,6 +39,7 @@ async function getUsers() {
 getUsers().then(res => {
   let userList = res.map(user => {
     let current = {
+      id: user._id,
       userName: user.userName,
       email: user.email,
       favorites: user.favorites,
@@ -77,8 +79,8 @@ export default function userReducer(state = DEFAULT_STATE, action) {
           return user.email === action.payload.email;
         })
       };
-      break;
     case UPDATE_USER:
+      console.log(action.payload);
       return {
         ...state,
         users: state.users.map((user, index) => {
@@ -99,12 +101,13 @@ export default function userReducer(state = DEFAULT_STATE, action) {
         })
       };
     case SIGN_IN: {
+      let temp = users.filter(user => {
+        return user.email === action.payload.email;
+      });
       return {
         ...state,
         isLoggedIn: true,
-        currentUser: users.filter(user => {
-          return user.email === action.payload.email;
-        })
+        currentUser: temp[0]
       };
     }
     case SIGN_OUT: {
@@ -114,6 +117,16 @@ export default function userReducer(state = DEFAULT_STATE, action) {
         currentUser: []
       };
     }
+    case ADD_FAVORITE: {
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          favorites: [...state.currentUser.favorites, action.payload.id]
+        }
+      };
+    }
+
     default:
       return state;
   }

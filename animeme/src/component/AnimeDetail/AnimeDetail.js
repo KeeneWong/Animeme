@@ -3,19 +3,26 @@ import "./AnimeDetail.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { addFavorite, updateUser } from "../../actions/userList";
 
 class Details extends Component {
   constructor() {
     super();
     this.state = {
-      anime_id: "",
-      favorites: ""
+      anime_id: ""
+      // currentUser: ""
     };
   }
 
   componentDidMount() {
     console.log(this.props);
+    // this.setState({ currentUser: this.props.user.currentUser });
   }
+
+  // componentDidUpdate() {
+  //   console.log(this.props);
+  //   console.log(this.state);
+  // }
 
   //this is a function that take the favorites state to update the database user's favorites animes
   updateFavorite = () => {
@@ -25,13 +32,15 @@ class Details extends Component {
     axios
       .put(
         //it use the props that pass down  by App.js
-        "https://animeme-api.herokuapp.com/api/users/acc/" + this.props.email,
+        "https://animeme-api.herokuapp.com/api/users/acc/" +
+          this.props.user.currentUser.email,
         {
           //set the database
-          favorites: this.state.favorites
+          favorites: this.props.user.currentUser.favorites
         }
       )
       .then(res => {
+        console.log(this.props.currentUser);
         console.log(res);
       })
       .catch(err => {
@@ -46,23 +55,35 @@ class Details extends Component {
       //return the single anime that match the params
       return each.titles.en_jp === this.props.match.params.animeName;
     });
-    //take the result to set the state of anime_id
-    this.setState({ anime_id: thisanime[0]._id });
 
-    //get the original user favorites set of animes and create a new one by adding a new animes using (concat)
+    // this.setState({
+    //   currentUser: {
+    //     favorites: [...this.state.currentUser.favorites, thisanime[0]]
+    //   }
+    // });
+
+    // console.log(this.state.currentUser);
+    // this.props.updateUser(this.state.currentUser.id, this.state.currentUser);
+
+    //take the result to set the state of anime_id
+    // this.setState({ anime_id: thisanime[0]._id });
+
+    // get the original user favorites set of animes and create a new one by adding a new animes using (concat)
     axios
       .get(
-        "https://animeme-api.herokuapp.com/api/users/ref/" + this.props.email
+        "https://animeme-api.herokuapp.com/api/users/ref/" +
+          this.props.user.currentUser.email
       )
       .then(res => {
-        console.log(res.data.favorites.indexOf(this.state.anime_id));
-        if (res.data.favorites.indexOf(this.state.anime_id) === -1) {
-          let originalfav = res.data.favorites.concat(this.state.anime_id);
-          this.setState({
-            favorites: originalfav
-          });
+        console.log(res.data.favorites.includes(this.state.anime_id));
+        if (!res.data.favorites.includes(this.state.anime_id)) {
+          // let originalfav = res.data.favorites.concat(this.state.anime_id);
+          // this.setState({
+          //   favorites: originalfav
+          // });
+          this.props.addFavorite(thisanime[0]);
           this.updateFavorite();
-        } else if (res.data.favorites.indexOf(this.state.anime_id) !== -1) {
+        } else if (res.data.favorites.includes(this.state.anime_id)) {
           alert(`This anime has been already added to your favorites list`);
         }
       })
@@ -86,6 +107,7 @@ class Details extends Component {
       )
       .then(res => {
         let index = res.data.favorites.indexOf(thisanime[0]._id);
+
         // console.log(index);
         let newfavorites = res.data.favorites;
         newfavorites.splice(index, 1);
@@ -131,22 +153,23 @@ class Details extends Component {
         return each.titles.en_jp === this.props.match.params.animeName;
       });
 
-      axios
-        .get(
-          "https://animeme-api.herokuapp.com/api/users/ref/" +
-            this.props.user.currentUser[0].email
-        )
-        .then(res => {
-          if (res.data.favorites.includes(thisanime[0]._id)) {
-            document.querySelector(".addbutton").classList.add("green");
-            document.querySelector(".addbutton").innerText = "Added";
-            document.querySelector(".deletebutton").classList.remove("hidden");
-          }
-        });
+      // axios
+      //   .get(
+      //     `https://animeme-api.herokuapp.com/api/users/ref/" ${
+      //       this.props.user.currentUser[0].email
+      //     }`
+      //   )
+      //   .then(res => {
+      //     if (res.data.favorites.includes(thisanime[0]._id)) {
+      //       document.querySelector(".addbutton").classList.add("green");
+      //       document.querySelector(".addbutton").innerText = "Added";
+      //       document.querySelector(".deletebutton").classList.remove("hidden");
+      //     }
+      //   });
     } else if (this.props.user.isLoggedIn === false) {
       buttons = [
         <Link to="/">
-          <h3 class="backbutton">Back</h3>
+          <h3 className="backbutton">Back</h3>
         </Link>
       ];
     }
@@ -167,12 +190,10 @@ class Details extends Component {
                 }}
               />
             </div>
-            <div class="rightDetail">
+            <div className="rightDetail">
               <h1>{thisanime[0].titles.en_jp}</h1>
               <h3 className="overflow synopsis">{thisanime[0].synopsis}</h3>
               <div className="buttondiv">{buttons}</div>
-              {/* <h2>{this.state.favorites[0]}</h2>
-          <h2>{this.state.favorites[1]}</h2> */}
             </div>
             )
           </div>
@@ -187,5 +208,14 @@ const mapStateToProps = state => ({
   user: state.users
 });
 
-const AnimeDetail = connect(mapStateToProps)(Details);
+const mapDispatchToProps = dispatch => ({
+  addFavorite: id => dispatch(addFavorite(id)),
+  updateUser: (id, updatedUser) => dispatch(updateUser(id, updatedUser))
+});
+
+const AnimeDetail = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Details);
+
 export default AnimeDetail;

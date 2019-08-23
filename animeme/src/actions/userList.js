@@ -3,7 +3,8 @@ import {
   REMOVE_USER,
   UPDATE_USER,
   SIGN_IN,
-  SIGN_OUT
+  SIGN_OUT,
+  ADD_FAVORITE
 } from "../constants/userList.js";
 
 export function createNewUser(email, userName, password) {
@@ -41,4 +42,11 @@ export const signIn = email => ({
 
 export const signOut = () => ({
   type: SIGN_OUT
+});
+
+export const addFavorite = id => ({
+  type: ADD_FAVORITE,
+  payload: {
+    id
+  }
 });

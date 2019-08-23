@@ -6,7 +6,7 @@ class AnimeDiv extends Component {
   render() {
     return (
       <Link
-        class="animedivcontain"
+        className="animedivcontain"
         to={"/animes/" + this.props.animes.titles.en_jp}
       >
         <div
