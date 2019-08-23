@@ -61,14 +61,7 @@ class SearchResults extends Component {
           placeholder="anime name"
           onChange={this.updatesearch}
         />
-<<<<<<< HEAD
-        {/* <button className="searchbutton" onClick={this.updateresult}>
-          Search
-        </button> */}
-        {/* <div className="pika" /> */}
 
-=======
->>>>>>> refs/remotes/origin/master
         <div>{displayresult}</div>
       </div>
     );
