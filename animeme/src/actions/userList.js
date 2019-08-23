@@ -4,7 +4,8 @@ import {
   UPDATE_USER,
   SIGN_IN,
   SIGN_OUT,
-  ADD_FAVORITE
+  ADD_FAVORITE,
+  REMOVE_FAVORITE
 } from "../constants/userList.js";
 
 export function createNewUser(email, userName, password) {
@@ -48,5 +49,12 @@ export const addFavorite = id => ({
   type: ADD_FAVORITE,
   payload: {
     id
+  }
+});
+
+export const removeFavorite = arr => ({
+  type: REMOVE_FAVORITE,
+  payload: {
+    arr
   }
 });

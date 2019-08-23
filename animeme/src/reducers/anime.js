@@ -30,6 +30,7 @@ async function getAnime() {
 getAnime().then(res => {
   let animeList = res.map(anime => {
     let current = {
+      id: anime._id,
       titles: anime.titles,
       type: anime.type,
       synopsis: anime.synopsis,
